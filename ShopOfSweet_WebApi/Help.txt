@@ -1,0 +1,19 @@
+﻿    //Add-Migration InitialCreate
+    //Update-Database
+
+SELECT D.Id
+      ,[TransactionId]
+      ,D.[Description]
+      ,[ProductId]
+	  ,P.manufacturer
+	  ,P.Name
+	  ,P.SerialNumber
+      ,[Quantity]
+      ,[ShopId]
+      ,[DateTime]
+      ,[Price]
+      ,[Discount]
+  FROM [ShopOfSweetsDB].[dbo].[Deals] D
+  LEFT JOIN
+  Products P
+  on D.ProductId = P.Id
