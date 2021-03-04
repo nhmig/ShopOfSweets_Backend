@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace ShopOfSweet_WebApi.Models
         public string manufacturer { get; set; }
         [MaxLength(255)]
         public string SerialNumber { get; set; }
+        [JsonIgnore]
         public List<Deals> Deals { get; set; }
     }
     //Add-Migration InitialCreate

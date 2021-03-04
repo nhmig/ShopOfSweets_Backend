@@ -9,7 +9,7 @@ using ShopOfSweet_WebApi.Data;
 
 namespace ShopOfSweet_WebApi.Migrations
 {
-    [DbContext(typeof(ProductContext))]
+    [DbContext(typeof(SweetsDbContext))]
     [Migration("20210301111029_Init2")]
     partial class Init2
     {

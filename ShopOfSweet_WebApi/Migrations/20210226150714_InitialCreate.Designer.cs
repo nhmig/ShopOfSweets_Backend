@@ -8,7 +8,7 @@ using ShopOfSweet_WebApi.Data;
 
 namespace ShopOfSweet_WebApi.Migrations
 {
-    [DbContext(typeof(ProductContext))]
+    [DbContext(typeof(SweetsDbContext))]
     [Migration("20210226150714_InitialCreate")]
     partial class InitialCreate
     {

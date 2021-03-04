@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace ShopOfSweet_WebApi.Data
 {
-    public class ProductContext : DbContext
+    public class SweetsDbContext : DbContext
     {
-        public ProductContext(DbContextOptions<ProductContext> opt) : base(opt)
+        public SweetsDbContext(DbContextOptions<SweetsDbContext> opt) : base(opt)
         {
 
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Deals> Deals { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Shop> Shops { get; set; }
     }
 }

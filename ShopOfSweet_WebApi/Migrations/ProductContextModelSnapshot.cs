@@ -8,7 +8,7 @@ using ShopOfSweet_WebApi.Data;
 
 namespace ShopOfSweet_WebApi.Migrations
 {
-    [DbContext(typeof(ProductContext))]
+    [DbContext(typeof(SweetsDbContext))]
     partial class ProductContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

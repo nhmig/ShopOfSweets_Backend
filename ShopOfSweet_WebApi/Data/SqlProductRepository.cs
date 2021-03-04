@@ -8,9 +8,9 @@ namespace ShopOfSweet_WebApi.Data
 {
     public class SqlProductRepository : IProductRepository
     {
-        private readonly ProductContext _context;
+        private readonly SweetsDbContext _context;
 
-        public SqlProductRepository(ProductContext context)
+        public SqlProductRepository(SweetsDbContext context)
         {
             _context = context;
         }

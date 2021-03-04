@@ -16,6 +16,10 @@ namespace ShopOfSweet_WebApi.Profiler
             CreateMap<Product, ProductReadDto>();
             CreateMap<ProductUpdateDto, Product>();
             CreateMap<Product, ProductUpdateDto>();
+
+            CreateMap<DealCreateDto, Deals>();
+            CreateMap<Deals, DealReadDto>();
+
         }
 
        

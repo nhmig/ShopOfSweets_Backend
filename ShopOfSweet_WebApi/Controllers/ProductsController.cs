@@ -26,7 +26,7 @@ namespace ShopOfSweet_WebApi.Controllers
 
         //private readonly MockProductRepository _repository = new MockProductRepository();
         [HttpGet]
-        public ActionResult<IEnumerable<ProductReadDto>> GetAllCommands()
+        public ActionResult<IEnumerable<ProductReadDto>> GetAllProducts()
         {
             var productItems = _repository.GetAllProducts();
 

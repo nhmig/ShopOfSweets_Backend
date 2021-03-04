@@ -29,10 +29,12 @@ namespace ShopOfSweet_WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductContext>(opt => opt.UseSqlServer
+            services.AddDbContext<SweetsDbContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("ShopOfSweetsConnection")));
-
             services.AddScoped<IProductRepository, SqlProductRepository>();
+            services.AddScoped<IDealRepository, SqlDealRepository>();
+
+            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
