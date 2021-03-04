@@ -47,12 +47,13 @@ namespace ShopOfSweet_WebApi.Controllers
         [HttpGet("filtered")]
         public ActionResult<IEnumerable<DealReadDto>> GetDealByFilter([FromBody] DealQueryReadDto query)
         {
-            var dealItems = _mapper.Map<Deals>(query);
+
+            var dealItems = _repository.GetDealByFilter(query.fromDt, query.toDt, query.transaction, query.product);
+
             if (dealItems != null)
             {
-                return Ok(_mapper.Map<DealReadDto>(dealItems));
+                return Ok(_mapper.Map<IEnumerable<DealReadDto>>(dealItems));
             }
-
             return NotFound();
         }
 

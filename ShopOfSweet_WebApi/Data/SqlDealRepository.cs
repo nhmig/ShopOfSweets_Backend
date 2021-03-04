@@ -25,13 +25,15 @@ namespace ShopOfSweet_WebApi.Data
             {
                 throw new ArgumentNullException(nameof(deal));
             }
-            var child1 = _context.Transactions.Where(t => t.Id == deal.TransactionId).ToList().FirstOrDefault();
-            var child = _context.Transactions.Where(t => t.Id == deal.TransactionId).FirstOrDefault();
-            if (child == null)
+            deal.Transaction = _context.Transactions.FirstOrDefault(t => t.Id == deal.TransactionId);
+            deal.Product = _context.Products.FirstOrDefault(t => t.Id == deal.ProductId);
+            deal.Shop = _context.Shops.FirstOrDefault(t => t.Id == deal.ShopId);
+
+            if (deal.Transaction is null || deal.Product is null || deal.Shop is null)
             {
                 throw new ArgumentNullException(nameof(deal));
             }
-            deal.Transaction = child;
+
             _context.Deals.Add(deal);
         }
 
@@ -55,7 +57,11 @@ namespace ShopOfSweet_WebApi.Data
 
         public IEnumerable<Deals> GetDealByFilter(DateTime fromDt, DateTime toDt, int transactoin = 0, int product = 0)
         {
-            IQueryable<Deals> deals = _context.Deals.Where(p => p.DateTime >= fromDt && p.DateTime <= toDt);
+            IQueryable<Deals> deals = _context.Deals
+                .Where(p => p.DateTime >= fromDt && p.DateTime <= toDt)
+                .Include(t => t.Transaction)
+                .Include(p => p.Product)
+                .Include(s => s.Shop);
             //return _context.Deals.Where(p => p.DateTime >= fromDt && p.DateTime <= toDt);
             if (transactoin != 0)
                 deals = deals.Where(p => p.TransactionId == transactoin);
